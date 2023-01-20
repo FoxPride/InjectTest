@@ -37,23 +37,7 @@ BOOL APIENTRY DllMain(HMODULE h_module, DWORD  ul_reason_for_call, LPVOID lp_res
 }
 DWORD WINAPI load_library_async(LPVOID lpParam)
 {
-	//Create Console
-	AllocConsole();
-	FILE* f;
-	freopen_s(&f, "CONOUT$", "w", stdout);
-
 	load_library();
-
-	while (true)
-	{
-		if (GetAsyncKeyState(VK_END) & 1)
-		{
-			break;
-		}
-	}
-
-	fclose(f);
-	FreeConsole();
 	FreeLibraryAndExitThread(thisProcessModule, 0);
 }
 
